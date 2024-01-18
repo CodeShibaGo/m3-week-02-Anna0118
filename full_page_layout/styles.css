@@ -4,25 +4,233 @@
     }
 }
 
-#navbar {
-    position: fixed;
-    /* Fixed position */
-    top: 0;
-    /* Align to the top of the viewport */
-    width: 100%;
-    /* Full width */
-    background-color: #333;
-    /* A color to make the navbar stand out */
-    z-index: 10;
-    /* Ensure the navbar is above other content */
+* {
+    margin: 0;
+    padding: 0;
 }
 
 /* Add some padding to the body to prevent the navbar from covering content */
 body {
     padding-top: 50px;
     /* Adjust the value based on the height of your navbar */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    color: white;
+    width: 100%;
+}
+
+body,
+html {
+    max-width: 100%;
+    overflow-x: hidden;
+    /* 防止水平滾動 */
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h1,
+h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Navbar section */
+.nav {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(17, 172, 164);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+    z-index: 6;
+}
+
+.nav-list {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list a {
+    display: block;
+    list-style-type: none;
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    color: white;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
 }
 
 
+.nav-list a:hover {
+    margin-top: 1px;
+    text-decoration-line:underline;
+    /* 滑鼠懸停時的顏色，可自定義 */
+}
 
 
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    background-image: linear-gradient(62deg, #3a3d40 0%, #181719 100%);
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.animated-text {
+    animation: colorChange 3s infinite;
+}
+
+@keyframes colorChange {
+    0% {
+        color: white;
+    }
+    50%{
+        color: yellow;
+    }
+    100% {
+        color: white;
+    }
+}
+
+/* Poject section */
+.projects-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+    padding: 0 2rem;
+    background: rgb(103, 98, 98);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* auto-fit自動調整列的數量，基於容器的寬度。最小寬度320px，最大就是容器寬度的一份 */
+    grid-gap: 4rem; 
+    /* 設置間隔 */
+    width: 100%;
+    max-width: 1280px;
+    /* 限制了網格容器的最大寬度，同時使其寬度為父容器寬度的 100%。 */
+    margin: 30px auto;
+    margin-bottom: 6rem;
+}
+
+.project-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #aca0a0;
+    /* 設置背景色 */
+    border-radius: 10px;
+    /* 圓角邊框 */
+    overflow: hidden;
+    /* 隱藏超出邊框的部分 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* 陰影效果 */
+}
+
+
+.project-image {
+    max-width: 100%;
+    /* 確保圖片不會超過其容器的寬度 */
+    max-height: 300px;
+    /* 限制圖片的最大高度 */
+    width: auto;
+    /* 保持圖片原始寬高比 */
+    height: auto;
+    /* 保持圖片原始寬高比 */
+    margin: auto;
+    /* 在容器中居中圖片 */
+    display: block;
+    /* 確保 margin:auto 正常工作 */
+}
+
+.project-title {
+    padding: 15px;
+    font-size: 1.2rem;
+    text-align: center; 
+    background-color: rgb(129, 157, 148);
+    color: black;
+    margin-top: auto;
+    font-family: 'Roboto', sans-serif;
+    /* 標題居中 */
+}
+
+/* 專案磚懸停效果 */
+.project-tile {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* 平滑過渡效果 */
+}
+.project-tile:hover {
+    transform: translateY(-10px);
+    /* 輕微向上移動 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* 增加陰影 */
+}
+
+/* Contact section */
+.contact-section {
+    text-align: center;
+    background: rgb(162, 190, 187);
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 80vh;
+    padding: 0 2rem;
+    background: rgb(107, 166, 160);
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 980px;
+    margin-top: 4rem;
+    flex-wrap: wrap;
+}
+
+.contact-details {
+    font-size: 1.5rem;
+    margin-right: 10px;
+    transition: transform 0.3s ease-out;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 1rem;
+    border-radius: 1px;
+}
+
+/* Footer section */
+footer {
+    font-weight: 300;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem;
+    background: grey;
+    /* border-top: 4px solid var(--main-red); */
+}
