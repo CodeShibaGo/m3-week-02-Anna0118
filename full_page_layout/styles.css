@@ -1,0 +1,28 @@
+@media (max-width: 600px) {
+    h1 {
+        font-size: 4vw;
+    }
+}
+
+#navbar {
+    position: fixed;
+    /* Fixed position */
+    top: 0;
+    /* Align to the top of the viewport */
+    width: 100%;
+    /* Full width */
+    background-color: #333;
+    /* A color to make the navbar stand out */
+    z-index: 10;
+    /* Ensure the navbar is above other content */
+}
+
+/* Add some padding to the body to prevent the navbar from covering content */
+body {
+    padding-top: 50px;
+    /* Adjust the value based on the height of your navbar */
+}
+
+
+
+
