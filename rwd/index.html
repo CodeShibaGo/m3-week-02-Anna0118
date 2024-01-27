@@ -11,8 +11,8 @@
       /* 基本颜色定义 */
       :root {
         --spanish-red: #c0392b;
-        --spanish-yellow: #f4d65f;
-        --spanish-blue: #05446d;
+        --spanish-yellow: #f6e6a7;
+        --spanish-blue: #02395d;
       }
 
       /* 全局样式设置 */
@@ -27,6 +27,115 @@
         list-style: none;
         box-sizing: border-box; /* 直接設置元素的最終寬度和高度 */
       }
+
+      /* nav START */
+
+      #menu_control {
+        position: absolute;
+        z-index: -2;
+        opacity: 0;
+      }
+
+      .header {
+        height: 50px;
+        background-color: var(--spanish-blue);
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-left: 10px
+      }
+      .logo {
+        width: 60px;
+        height: 40px;
+        margin:0px;
+
+      }
+      .logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+      .logo img {
+        width: 100%;
+        height: auto;
+      }
+      .menu_btn {
+        width: 40px;
+        height: 40px;
+        background-color: transparent;
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+      }
+      .menu_btn span {
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        display: block;
+        overflow: hidden;
+      }
+
+      .menu_btn::before {
+        content: "";
+        position: absolute;
+        width: 36px;
+        height: 2px;
+        left: 2px;
+        background-color: var(--spanish-yellow);
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        box-shadow: 0px 8px 0px var(--spanish-yellow),
+          0px -8px 0px var(--spanish-yellow);
+      }
+
+      nav {
+        width: 65%;
+        /* height: 100vh; */
+        height: calc(100vh - 50px);
+        background-color: rgba(192, 57, 43, 0.9);
+        position: absolute;
+        top: 50px;
+        left: -100%;
+        transition: 0.5s;
+      }
+
+      nav a {
+        display: block;
+        text-decoration: none;
+        color: var(--spanish-yellow);
+        padding: 15px 30px;
+        font-size: 1.5em;
+        position: relative;
+        overflow: hidden;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: transparent; /* 隱藏原始西班牙文 */
+        background-color: var(--spanish-yellow); /* 懸停時背景變色 */
+      }
+
+      nav a:hover::after {
+        content: attr(data-hover); /* 顯示中文文本 */
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        /* 垂直居中：先定位到頂部的 50% */
+        transform: translateY(-50%);
+        /* 再向上移動文本自身高度的一半 */
+        color: var(--spanish-red); /* 中文文本的顏色 */
+        font-size: 1em; /* 根據需要調整字體大小 */
+      }
+
+      #menu_control:checked ~ .header nav {
+        left: 0;
+      }
+
+      /* nav END */
+
+      /* content START */
 
       img {
         vertical-align: bottom;
@@ -62,7 +171,7 @@
         margin-top: 5px;
       }
 
-      /* 模塊內容區 */
+      /* 內容區 */
       .item-group {
         width: 100%;
         max-width: 1400px;
@@ -78,7 +187,7 @@
         object-fit: cover; /* 图片保持比例 */
       }
 
-      /* 模塊文字區 */
+      /* 文字區 */
       .item .text {
         padding-top: 5px;
         text-align: center;
@@ -111,7 +220,11 @@
       /* 服務區塊样式 */
       .service {
         margin: 60px 0;
+        background-color: #fbf6e1;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
       }
+
+      /* content END */
 
       /* RWD佈局 */
       @media screen and (min-width: 768px) {
@@ -158,6 +271,40 @@
           flex-direction: column;
           justify-content: center;
         }
+
+        .menu_btn {
+          display: none;
+        }
+        .header {
+          display: flex;
+          justify-content: space-between;
+          background-color: var(--spanish-blue);
+          align-items: center;
+        }
+        nav {
+          left: 0;
+          position: relative;
+          display: flex;
+          width: auto;
+          height: auto;
+          top: 0;
+          background-color: transparent;
+        }
+        nav a {
+          border-bottom: none;
+          padding: 10px 20px;
+          font-size: 1em;
+          text-align: center;
+          transition: 0.3s ease;
+        }
+
+        nav a:hover {
+          background-color: var(--spanish-red); /* 懸停時的背景顏色 */
+          color: var(--spanish-yellow); /* 懸停時的文字顏色 */
+        }
+        nav a:hover::after {
+          display: none; /* 桌面版可能不需要 hover 顯示中文的效果 */
+        }
       }
 
       /* 頁尾 */
@@ -170,6 +317,26 @@
     </style>
   </head>
   <body>
+    <input type="checkbox" name="" id="menu_control" />
+
+    <div class="header">
+      <h1 class="logo">
+        <a href="#"
+          ><img src="https://seeklogo.com/images/S/Spain-logo-72350D8587-seeklogo.com.png" alt=""
+        /></a>
+      </h1>
+
+      <label for="menu_control" class="menu_btn">
+        <span>選單</span>
+      </label>
+      <nav>
+        <a href="#" data-hover="首頁">Hola</a>
+        <a href="#" data-hover="帶你學西語">Español</a>
+        <a href="#" data-hover="食物即文化">Comida</a>
+        <a href="#" data-hover="朝聖之路">Camino de Santiago</a>
+      </nav>
+    </div>
+
     <div class="banner">
       <img
         src="https://images.unsplash.com/photo-1566232392379-afd9298e6a46?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
