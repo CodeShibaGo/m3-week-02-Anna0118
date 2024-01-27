@@ -1,56 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>帶你看西班牙</title>
     <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-            list-style: none;
+      /* @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap"); */
+
+      /* 基本颜色定义 */
+      :root {
+        --spanish-red: #c0392b;
+        --spanish-yellow: #f4d65f;
+        --spanish-blue: #05446d;
+      }
+
+      /* 全局样式设置 */
+      body {
+        font-family: "Lora", serif;
+        color: var(--spanish-blue); /* 添加西班牙藍色 */
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box; /* 直接設置元素的最終寬度和高度 */
+      }
+
+      img {
+        vertical-align: bottom;
+      }
+      /* Banner區 */
+      .banner img {
+        width: 100%;
+      }
+
+      /* 標題區 */
+      .title {
+        color: var(--spanish-red); /* 西班牙紅色文字 */
+        border-bottom: 3px solid var(--spanish-red); /* 磚紅色邊框 */
+        margin: 0 0 20px;
+        padding: 30px 30px;
+        background-color: rgb(236, 232, 232);
+      }
+
+      .title h2 {
+        text-align: center;
+        font-size: 30px;
+      }
+
+      .title p {
+        font-size: 22px;
+        text-align: center;
+      }
+
+      .subtitle span {
+        display: block; /* 設為塊級元素 */
+        font-size: 14px;
+        color: var(--spanish-red);
+        margin-top: 5px;
+      }
+
+      /* 模塊內容區 */
+      .item-group {
+        width: 100%;
+        max-width: 1400px;
+        margin: auto;
+      }
+
+      .item {
+        margin: 0px 10px 20px;
+      }
+
+      .item .pic img {
+        width: 100%; /* 图片宽度100% */
+        object-fit: cover; /* 图片保持比例 */
+      }
+
+      /* 模塊文字區 */
+      .item .text {
+        padding-top: 5px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .item .text h3 {
+        font-size: 24px;
+        margin-bottom: 0;
+      }
+
+      .item .text p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      /* 图片和文字的悬浮效果 */
+      .item .pic img,
+      .item .text {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .item:hover .pic img,
+      .item:hover .text {
+        transform: scale(1.03);
+      }
+
+      /* 服務區塊样式 */
+      .service {
+        margin: 60px 0;
+      }
+
+      /* RWD佈局 */
+      @media screen and (min-width: 768px) {
+        .item-group {
+          display: flex;
+          justify-content: center;
         }
-        .wrap{
-            width: 100%;
-            max-width: 1400px;
+
+        .item .pic {
+          height: 200px; /* 设置图片区域的固定高度 */
+          overflow: hidden; /* 隐藏超出部分 */
         }
-        .item{
-            background-color: #ffa;
-            margin: 0 10px 20px;
-            padding: 10px;
+
+        .item .pic img {
+          width: 100%; /* 图片宽度100% */
+          height: 100%; /* 图片高度100% */
+          object-fit: cover; /* 图片按比例缩放，可能會被裁剪 */
         }
-        @media screen and (min-width: 768px) {
-            .wrap{
-                display: flex;
-                margin: auto;
-                
-            }
-            .item{
-                width: 500px;
-            }
+
+        .item {
+          min-height: 400px; /* 設置最小高度 */
+          display: flex;
+          flex-direction: column;
+          justify-content: center; /* 垂直居中内容 */
         }
+
+        .service .item {
+          flex-direction: row; /* 图片在右侧，文字在左侧 */
+          align-items: center;
+        }
+
+        .service .item .pic,
+        .service .item .text {
+          display: flex;
+          width: 50%;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .service .item .text {
+          padding: 0 20px;
+          display: flex;
+          width: 50%;
+          flex-direction: column;
+          justify-content: center;
+        }
+      }
+
+      /* 頁尾 */
+      .footer {
+        background-color: darkgrey;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+      }
     </style>
-</head>
-<body>
-    <div class="wrap">
-        <div class="item">
-            <h3>title</h3>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos quaerat aliquam dolor quod Voluptates
-            </p>
-        </div>
-        <div class="item">
-            <h3>title</h3>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam velit, nulla debitis suscipit vitae qui rem officiis in laboriosam, nam officia sint! Minima maxime, libero beatae eveniet obcaecati alias fugiat.
-            </p>
-        </div>
-        <div class="item">
-            <h3>title</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates voluptate nemo repudiandae perferendis consectetur, omnis nam minus dolorum incidunt assumenda tempora voluptatum magni saepe eveniet sapiente unde quibusdam blanditiis iure.
-            </p>
-        </div>
+  </head>
+  <body>
+    <div class="banner">
+      <img
+        src="https://images.unsplash.com/photo-1566232392379-afd9298e6a46?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt=""
+      />
     </div>
-</body>
+
+    <div class="about">
+      <div class="wrap">
+        <div class="title">
+          <h2>帶你看西班牙</h2>
+          <p>Un viaje por España</p>
+        </div>
+        <div class="item-group">
+          <div class="item">
+            <div class="pic">
+              <img
+                src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QmFyY2Vsb25hfGVufDB8fDB8fHwy"
+                alt=""
+              />
+            </div>
+            <div class="text">
+              <h3>巴塞隆納的魔力</h3>
+              <div class="subtitle">
+                <span>El encanto de Barcelona</span>
+              </div>
+              <p>
+                以其獨特的棋盤格式街道佈局而聞名。這一設計由著名城市規劃師伊利達·塞爾達（Ildefons
+                Cerdà）於19世紀提出，旨在擴展城市空間並提高居住質量。
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="pic">
+              <img
+                src="https://images.unsplash.com/photo-1559564477-6e8582270002?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div class="text">
+              <h3>塞維利亞的傳統</h3>
+              <div class="subtitle">
+                <span>La tradición de Sevilla</span>
+              </div>
+              <p>
+                以其宏偉的哥德式建築——塞維利亞大教堂而聞名。每年的塞維利亞四月節是這座城市的一大亮點，居民和遊客會聚集一起享受傳統音樂、舞蹈和美食。
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="pic">
+              <img
+                src="https://images.unsplash.com/photo-1677498746647-647c113839d2?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div class="text">
+              <h3>馬德里的現代風采</h3>
+              <div class="subtitle">
+                <span>La modernidad de Madrid</span>
+              </div>
+              <p>
+                西班牙首都，這座城市充滿活力與現代氣息。普拉多博物館擁有世界級的藝術藏品和壯觀的皇宮。雷蒂羅公園等公園和廣場為城市生活提供了一片綠洲。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service">
+      <div class="item">
+        <div class="pic">
+          <img
+            src="https://images.unsplash.com/photo-1656850154321-26726cf943fd?q=80&w=1007&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D://picsum.photos/300/200?random=24"
+            alt=""
+          />
+        </div>
+        <div class="text">
+          <h3>佛朗明哥舞蹈</h3>
+          <div class="subtitle">
+            <span>El baile flamenco</span>
+          </div>
+          <p>
+            這種充滿激情的舞蹈和音樂形式是西班牙文化的重要組成部分。起源於安達盧西亞，以其強烈的情感、獨特的手勢和節奏性的腳步聞名。它不僅是一種藝術表現形式，也是西班牙歷史和文化的象徵。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about">
+      <div class="wrap">
+        <div class="title">
+          <h2>帶你吃西班牙</h2>
+          <p>La gastronomía española</p>
+        </div>
+        <div class="item-group">
+          <div class="item">
+            <div class="pic">
+              <img
+                src="https://images.unsplash.com/photo-1630175860333-5131bda75071?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8UGFlbGxhfGVufDB8fDB8fHwy"
+                alt=""
+              />
+            </div>
+            <div class="text">
+              <h3>海鮮燉飯</h3>
+              <div class="subtitle">
+                <span>Paella</span>
+              </div>
+              <p>
+                鮮米飯糅合了豐富的海洋風味與番紅花的獨特香氣，瓦倫西亞地區的驕傲。
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="pic">
+              <img
+                src="https://images.unsplash.com/photo-1609950547346-a4f431435b2b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8VGFwYXN8ZW58MHx8MHx8fDI%3D"
+                alt=""
+              />
+            </div>
+            <div class="text">
+              <h3>塔帕斯</h3>
+              <div class="subtitle">
+                <span>Tapas</span>
+              </div>
+              <p>
+                是一種美食，更是一種生活的藝術。最初是作為葡萄酒的伴侶，而如今已演變成一種獨特的飲食文化。
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="pic">
+              <img
+                src="https://images.unsplash.com/photo-1639669794539-952631b44515?q=80&w=921&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div class="text">
+              <h3>馬鈴薯烘蛋</h3>
+              <div class="subtitle">
+                <span>Tortilla de patatas</span>
+              </div>
+              <p>
+                以馬鈴薯和雞蛋製成的烘蛋，外層微脆，內裡鬆軟，簡單卻滿載濃郁的家鄉風情。
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="pic">
+              <img
+                src="https://images.unsplash.com/photo-1662469838214-a97415cd83fe?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div class="text">
+              <h3>冷湯</h3>
+              <div class="subtitle">
+                <span>Gazpacho</span>
+              </div>
+              <p>
+                一碗清爽的夏日解渴聖品。這種典型的安達盧西亞冷湯，以新鮮的番茄、黃瓜等蔬菜製成
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">&copy; copyright 2024 by anna</div>
+  </body>
 </html>
